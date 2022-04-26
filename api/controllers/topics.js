@@ -1,50 +1,25 @@
-const { getConnection } = require('../db/db');
+const { getAllTopics, getTopicById } = require('../db/topics');
 
 //Get all topics controller
 const getAllTopicsController = async (req, res) => {
-  let connection;
-
-  try {
-    connection = await getConnection();
-
-    const [topics] = await connection.query(
-      "SELECT idTopic, description FROM opinionsForumDB.Topic"
-    );
-
-    res.send(topics);
-  } finally {
-    if (connection) {
-      connection.release();
-    }
-  }
+  const topics = await getAllTopics();
+  res.send(topics);
 };
 
 //Get topics by id controller
-const getTopicByIdController = async (req,res) => {
-    const idTopic = Number(req.params.id);
+const getTopicByIdController = async (req, res) => {
+  const id = Number(req.params.id);
 
-    let connection;
+  const topic = await getTopicById(id);
+  if (!topic)
+    return res
+      .status(404)
+      .send({ message: 'The topic with the given ID was not found' });
 
-    try {
-        connection = await getConnection();
-        
-        const [topics] = await connection.query(
-            "SELECT idTopic, description FROM opinionsForumDB.Topic WHERE idTopic = ?", [idTopic]
-        );
-
-        if (topics.length === 0) {
-            return res.status(404).send('Topic not found');
-        }
-        const topic = topics[0];
-        res.send(topic);
-    } finally {
-        if (connection){
-            connection.release();
-        }
-    }
+  res.send(topic);
 };
 
 module.exports = {
-    getAllTopicsController,
-    getTopicByIdController
+  getAllTopicsController,
+  getTopicByIdController,
 };
