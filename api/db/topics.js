@@ -1,5 +1,6 @@
 const { getConnection } = require('../db/db');
 
+//get all topics from db
 const getAllTopics = async () => {
   let connection;
 
@@ -7,7 +8,7 @@ const getAllTopics = async () => {
     connection = await getConnection();
 
     const [topics] = await connection.query(
-      'SELECT idTopic, description FROM opinionsForumDB.Topic'
+      'SELECT idTopic, description FROM Topic'
     );
 
     return topics;
@@ -18,6 +19,7 @@ const getAllTopics = async () => {
   }
 };
 
+//get topic by id from db
 const getTopicById = async (id) => {
   let connection;
 
@@ -25,7 +27,7 @@ const getTopicById = async (id) => {
     connection = await getConnection();
 
     const [topics] = await connection.query(
-      'SELECT idTopic, description FROM opinionsForumDB.Topic WHERE idTopic = ?',
+      'SELECT idTopic, description FROM Topic WHERE idTopic = ?',
       [id]
     );
 
@@ -40,7 +42,53 @@ const getTopicById = async (id) => {
   }
 };
 
+//get topic by description from db
+const getTopicByDescription = async (description) => {
+  let connection;
+
+  try {
+    connection = await getConnection();
+
+    const [topics] = await connection.query(
+      'SELECT idTopic, description FROM Topic WHERE description = ?',
+      [description]
+    );
+
+    if (topics.length === 0) return null;
+
+    const topic = topics[0];
+    return topic;
+  } finally {
+    if (connection) {
+      connection.release();
+    }
+  }
+};
+
+//create new topic
+const createTopic = async (description) => {
+  let connection;
+
+  try {
+    connection = await getConnection();
+
+    const [result] = await connection.query(
+      'INSERT INTO Topic (description) VALUES (?)',
+      [description]
+    );
+
+    const id = result.insertId;
+    return id;
+  } finally {
+    if (connection) {
+      connection.release();
+    }
+  }
+};
+
 module.exports = {
-    getAllTopics,
-    getTopicById
+  getAllTopics,
+  getTopicById,
+  createTopic,
+  getTopicByDescription
 };

@@ -1,4 +1,9 @@
-const { getAllTopics, getTopicById } = require('../db/topics');
+const {
+  getAllTopics,
+  getTopicById,
+  createTopic,
+  getTopicByDescription,
+} = require('../db/topics');
 
 //Get all topics controller
 const getAllTopicsController = async (req, res) => {
@@ -19,7 +24,22 @@ const getTopicByIdController = async (req, res) => {
   res.send(topic);
 };
 
+// Create a topic
+const createTopicController = async (req, res) => {
+  const { description } = req.body;
+
+  const topic = await getTopicByDescription(description);
+
+  if (!topic) {
+    const id = await createTopic(description);
+    res.send({ message: `The topic with the ID: ${id} has been created` });
+  } else {
+    res.send({ message: 'The topic already exists', topic: topic });
+  }
+};
+
 module.exports = {
   getAllTopicsController,
   getTopicByIdController,
+  createTopicController,
 };
