@@ -86,9 +86,28 @@ const createTopic = async (description) => {
   }
 };
 
+//update topic 
+const updateTopic = async (id, newDescription) => {
+  let connection;
+
+  try {
+    connection = await getConnection();
+
+    await connection.execute(
+      'UPDATE Topic SET description = ? WHERE idTopic = ?',
+      [newDescription, id]
+    );
+  } finally {
+    if (connection) {
+      connection.release();
+    }
+  }
+};
+
 module.exports = {
   getAllTopics,
   getTopicById,
   createTopic,
-  getTopicByDescription
+  getTopicByDescription,
+  updateTopic
 };
