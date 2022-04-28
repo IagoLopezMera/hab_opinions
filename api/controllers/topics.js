@@ -3,7 +3,7 @@ const {
   getTopicById,
   createTopic,
   getTopicByDescription,
-  updateTopic
+  updateTopic,
 } = require('../db/topics');
 
 //Get all topics controller
@@ -30,19 +30,18 @@ const createTopicController = async (req, res) => {
   const { description } = req.body;
 
   const topic = await getTopicByDescription(description);
-  if (!topic) {
-    const id = await createTopic(description);
-    res.send({ message: `The topic with the ID: ${id} has been created` });
-  } else {
-    res.send({ message: 'The topic already exists', topic: topic });
-  }
+  if (topic)
+    return res.send({ message: 'The topic already exists', topic: topic });
+
+  const id = await createTopic(description);
+  res.send({ message: `The topic with the ID: ${id} has been created` });
 };
 
 //Update topic
 const updateTopicController = async (req, res) => {
   const id = Number(req.params.id);
   const { description: newDescription } = req.body;
-  
+
   const topicById = await getTopicById(id);
   if (!topicById)
     return res
@@ -51,7 +50,10 @@ const updateTopicController = async (req, res) => {
 
   const topicByDescription = await getTopicByDescription(newDescription);
   if (topicByDescription)
-    return res.send({ message: 'A topic with the new description already exists', topic: topicByDescription });
+    return res.send({
+      message: 'A topic with the new description already exists',
+      topic: topicByDescription,
+    });
 
   await updateTopic(id, newDescription);
   res.send({ message: `The topic with the ID: ${id} has been updated` });
@@ -61,5 +63,5 @@ module.exports = {
   getAllTopicsController,
   getTopicByIdController,
   createTopicController,
-  updateTopicController
+  updateTopicController,
 };
