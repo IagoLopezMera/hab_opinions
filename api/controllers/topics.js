@@ -34,7 +34,7 @@ const createTopicController = async (req, res) => {
     return res.send({ message: 'The topic already exists', topic: topic });
 
   const id = await createTopic(description);
-  res.send({ message: `The topic with the ID: ${id} has been created` });
+  res.send({ message: `The topic with the ID: ${id} has been created`,topic:id });
 };
 
 //Update topic
@@ -56,8 +56,7 @@ const updateTopicController = async (req, res) => {
     });
 
   await updateTopic(id, newDescription);
-  res.send({ message: `The topic with the ID: ${id} has been updated` });
-};
+  res.send({ message: `The topic with the ID: ${id} has been updated`, topic: id})};
 
 module.exports = {
   getAllTopicsController,

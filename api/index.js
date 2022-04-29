@@ -19,5 +19,9 @@ app.get('/api/topics/:id', getTopicByIdController);
 app.post('/api/topics', createTopicController);
 app.put('/api/topics/:id', updateTopicController);
 
+//Ratings routes
+
+
+
 const port = process.env.PORT || 3000;
 app.listen(port,() => console.log(`listening on port:${port}`));
