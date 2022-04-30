@@ -10,7 +10,8 @@ const {
 } = require('./controllers/topics');
 const { 
     getAllOpinionRatingsController,
-    getOpinionRatingByIdController
+    getOpinionRatingByIdController,
+    createOpinionRatingController
 } = require('./controllers/ratings');
 
 const app = express();
@@ -25,7 +26,8 @@ app.put('/api/topics/:id', updateTopicController);
 
 //Ratings routes
 app.get('/api/opinions/:idOpinion/ratings',getAllOpinionRatingsController);
-app.get('/api/opinions/:idOpinion/ratings/:idRating',getOpinionRatingByIdController);
+app.get('/api/opinions/:idOpinion/ratings/:idUser',getOpinionRatingByIdController);
+app.post('/api/opinions/:idOpinion/ratings',createOpinionRatingController);
 
 const port = process.env.PORT || 3000;
 app.listen(port,() => console.log(`listening on port:${port}`));
