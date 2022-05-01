@@ -67,8 +67,29 @@ const createRating = async (idOpinion, idUser, ratingType) => {
   }
 };
 
+//update opinion rating
+
+const updateOpinionRating = async (idOpinion,idUser, newRatingType) => {
+  let connection;
+
+  try {
+    connection = await getConnection();
+
+    await connection.execute(
+      'UPDATE Rating SET ratingType = ? WHERE idOpinion = ? AND idUser= ?',
+      [newRatingType,idOpinion,idUser]
+    );
+  } finally {
+    if (connection) {
+      connection.release();
+    }
+  }
+};
+
+
 module.exports = {
   getAllOpinionRatings,
   getOpinionRatingById,
   createRating,
+  updateOpinionRating
 };

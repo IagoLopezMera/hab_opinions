@@ -56,9 +56,8 @@ const updateTopicController = async (req, res) => {
     });
 
   await updateTopic(id, newDescription);
-  res.send({ message: `The topic with the ID: ${id} has been updated`, topic: id})};
-
-  
+  res.send({ message: `The topic with the ID: ${id} has been updated`, topic: id});
+};
 
 module.exports = {
   getAllTopicsController,
