@@ -11,11 +11,11 @@ const getUserByEmail = async (email) => {
   
       const [result] = await connection.query(
         `
-        SELECT * FROM User WHERE email = ?
+        SELECT idUser, userName, password, email FROM User WHERE email = ?
       `,
         [email]
       );
-  
+      
       if (result.length === 0) {
         throw generateError('No hay ningún usuario con ese email', 404);
       }
@@ -101,6 +101,23 @@ const createUser = async (userName, email, password) => {
     }
 }
 
+const modifyUserByEmail = async (id, userName, email) => {
+  let connection;
+
+  try {
+    connection = await getConnection();
+
+    const [result] = await connection.query(
+      `UPDATE User SET userName = ?, email = ? WHERE email = ?`, [userName, email, email]
+      );
+
+    return result;
+
+  } finally {
+      if(connection) connection.release();
+  }  
+}
+
 
 
 module.exports = {
@@ -108,4 +125,5 @@ module.exports = {
     getUserById,
     getUserByEmail,
     getUsers,
+    modifyUserByEmail,
 }

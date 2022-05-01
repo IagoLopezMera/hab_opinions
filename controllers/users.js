@@ -1,16 +1,24 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken')
+const Joi = require('@hapi/joi');
 const {generateError} = require('../helpers');
-const {createUser, getUserById, getUsers, getUserByEmail} = require('../db/user');
+const {createUser, getUserById, getUsers, getUserByEmail, modifyUserByEmail} = require('../db/user');
 require("dotenv").config()
 
 const newUserController = async (req, res, next) => {
   try {
     const {userName, email, password} = req.body;
 
-    // ¡¡¡¡¡¡¡¡¡¡ Hay que sustituir esto por el módulo Joi (vídeo de la semana pasada)!!!!!!!
-    if (!email || !password) {
-        throw generateError('Es necesario indicar un email y una contraseña', 400)
+    const schema = Joi.object().keys({
+      userName: Joi.string().min(2).max(20).required(),
+      email: Joi.string().email().required(),
+      password: Joi.string().min(8).required(),
+    })
+
+    const validation = schema.validate(req.body);
+
+    if (validation.error) {
+      throw generateError (validation.error.message, 400);
     }
 
     const id = await createUser(userName, email, password);
@@ -90,9 +98,37 @@ const loginController = async (req, res, next) => {
   }
 };
 
+const modifyUserController = async (req, res, next) => {
+  try {
+      const { id } = req.params;
+      const { userName, email, } = req.body;
+      const user = await getUserByEmail(email);
+
+      console.log(req.params);
+      console.log(req.body);
+
+      if (req.idUser !== user.idUser) {
+          throw generateError(
+              'No es posible modificar los datos de otro usuario'
+          )
+      }
+
+      // Modificar los datos del usuario
+      await modifyUserByEmail(id, userName, email);
+
+      res.send({
+          status: 'ok',
+          message: 'El usuario se ha modificado',
+      })
+  } catch(error) {
+      next(error);
+  }
+};
+
 module.exports = {
     newUserController,
     getUsersController,
     getSingleUserController,
     loginController,
+    modifyUserController,
 };

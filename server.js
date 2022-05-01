@@ -8,6 +8,7 @@ const {
     getUsersController,
     getSingleUserController,
     loginController,
+    modifyUserController,
 } = require('./controllers/users');
 
 const {
@@ -30,13 +31,14 @@ app.post('/api/users', newUserController);
 app.get('/api/users', getUsersController);
 app.get('/api/users/:id', getSingleUserController);
 app.post('/api/login', loginController);
+app.patch('/api/users/:id',authUser, modifyUserController);
 
 // ENDPOINTS DE OPINIONES
 app.post('/api/opinions', authUser, newOpinionController);
 app.get('/api/opinions', getOpinionsController);
 app.get('/api/opinions/:id', getSingleOpinionController);
-app.delete('/api/opinions/:id', deleteOpinionController);
-app.patch('/api/opinions/:id', modifyOpinionController);
+app.delete('/api/opinions/:id',authUser, deleteOpinionController);
+app.patch('/api/opinions/:id',authUser, modifyOpinionController);
 
 
 
@@ -55,11 +57,11 @@ app.use((error, req, res, next) => {
 
     res.status(error.httpStatus || 500).send({
         status: 'error',
-        message: error.message,       
-    })
-})
+        message: error.message,      
+    });
+});
 
 // Lanzamos el servidor
 app.listen(3000, () => {
     console.log('Servidor funcionando');
-})
+});
