@@ -1,0 +1,99 @@
+{
+	"info": {
+		"_postman_id": "ea9c892a-b3b5-48fb-a3a6-43cc5465d6d3",
+		"name": "Opinions",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "New Opinion",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/opinions",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"opinions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Opinions",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/opinions",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"opinions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Single Opinion",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/opinions/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"opinions",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Opinion",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/opinions/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"opinions",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Modify Opinion",
+			"request": {
+				"method": "PATCH",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}
