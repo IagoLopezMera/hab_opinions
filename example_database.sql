@@ -2,7 +2,7 @@
 --
 -- Host: localhost    Database: opinionsForumDB
 -- ------------------------------------------------------
--- Server version	8.0.28-0ubuntu0.20.04.3
+-- Server version	8.0.29-0ubuntu0.20.04.2
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -84,7 +84,7 @@ CREATE TABLE `Topic` (
   `idTopic` int NOT NULL AUTO_INCREMENT,
   `description` varchar(32) NOT NULL,
   PRIMARY KEY (`idTopic`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -93,7 +93,7 @@ CREATE TABLE `Topic` (
 
 LOCK TABLES `Topic` WRITE;
 /*!40000 ALTER TABLE `Topic` DISABLE KEYS */;
-INSERT INTO `Topic` VALUES (1,'foo'),(2,'ProgrammerHummor'),(3,'Programming'),(4,'Linux'),(5,'JavaScript'),(6,'NodeJs'),(7,'SQL'),(8,'my new topic 2'),(9,'my new topic 3'),(10,'my new topic 4');
+INSERT INTO `Topic` VALUES (1,'foo'),(2,'ProgrammerHummor'),(3,'Programming'),(4,'Linux'),(5,'JavaScript'),(6,'NodeJs'),(7,'SQL'),(8,'my new topic 2'),(9,'my new topic 3'),(10,'my new topic 4'),(11,'my new topic 100');
 /*!40000 ALTER TABLE `Topic` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -106,11 +106,11 @@ DROP TABLE IF EXISTS `User`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `User` (
   `idUser` int NOT NULL AUTO_INCREMENT,
-  `password` binary(60) NOT NULL,
+  `password` varchar(60) NOT NULL,
   `email` varchar(64) NOT NULL,
   `username` varchar(45) NOT NULL,
   PRIMARY KEY (`idUser`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -119,7 +119,7 @@ CREATE TABLE `User` (
 
 LOCK TABLES `User` WRITE;
 /*!40000 ALTER TABLE `User` DISABLE KEYS */;
-INSERT INTO `User` VALUES (1,_binary 'lorem ipsum\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0','example@example.com','example1'),(2,_binary 'lorem ipsum\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0','example2@example.com','example2');
+INSERT INTO `User` VALUES (1,'$2b$08$wKqy.la2A7NtZWwxI143au/MjobbV2N8S1g8CuroAlLQC.Pq8KYWq','example@example.com','example1'),(2,'$2b$08$wKqy.la2A7NtZWwxI143au/MjobbV2N8S1g8CuroAlLQC.Pq8KYWq','example2@example.com','example2'),(3,'$2b$08$wKqy.la2A7NtZWwxI143au/MjobbV2N8S1g8CuroAlLQC.Pq8KYWq','example100@example.com','example100');
 /*!40000 ALTER TABLE `User` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -132,4 +132,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-05-01 22:22:32
+-- Dump completed on 2022-05-03 21:29:30
