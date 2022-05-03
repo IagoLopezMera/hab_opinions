@@ -7,7 +7,7 @@ Change directory to API folder
 `cd api`
 
 Then run the node server
-`npm dev` or `nodemon index.js`
+`nodemon index.js`
 
 ## Example env file 
 * MYSQL_HOST = Type here hostname
