@@ -11,8 +11,8 @@ const newUserController = async (req, res, next) => {
 
     const schema = Joi.object().keys({
       userName: Joi.string().min(2).max(20).required(),
-      email: Joi.string().email().required(),
-      password: Joi.string().min(8).required(),
+      email: Joi.string().email().required().error(new Error('email incorrecto')),
+      password: Joi.string().min(8).required().error(new Error('mala contraseña')),
     })
 
     const validation = schema.validate(req.body);
@@ -103,9 +103,6 @@ const modifyUserController = async (req, res, next) => {
       const { id } = req.params;
       const { userName, email, } = req.body;
       const user = await getUserByEmail(email);
-
-      console.log(req.params);
-      console.log(req.body);
 
       if (req.idUser !== user.idUser) {
           throw generateError(
