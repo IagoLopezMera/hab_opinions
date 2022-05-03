@@ -1,4 +1,5 @@
 // const { generateError } = require('../helpers');
+const { generateError } = require('../helpers');
 const { getConnection } = require('./db');
 
 
@@ -28,8 +29,12 @@ const getOpinionById = async (id) => {
         const [result] = await connection.query(`
         SELECT idOpinion, text, idTopic, idUser FROM Opinion WHERE idOpinion = ?
         `, [id]);
-        
-        return result;
+
+        if(!result.length) {
+          throw generateError('La opinión no existe', 404);
+        }
+
+        return result[0];
     } finally {
         if(connection) connection.release();
     }
