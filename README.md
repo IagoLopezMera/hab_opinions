@@ -2,6 +2,11 @@
 This is an API for an opinion portal. Hope you enjoy it!
 
 ## How to run the code
+
+Change directory to API folder
+`cd api`
+
+Then run the node server
 `npm dev` or `nodemon index.js`
 
 ## Example env file 
