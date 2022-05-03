@@ -66,7 +66,7 @@ const deleteOpinionController = async (req, res, next) => {
         // Comprobar que el usario del token es el mismo que creó la opinión
         if (req.idUser !== opinion.idUser) {
             throw generateError(
-                'No es posible eliminar una opinión de otro usuario'
+                'No es posible eliminar una opinión de otro usuario',401
             )
         }
 
@@ -75,7 +75,7 @@ const deleteOpinionController = async (req, res, next) => {
 
         res.send({
             status: 'ok',
-            message: 'La opinión con id: ${id} ha sido eliminada.',
+            message: `La opinión con id: ${id} ha sido eliminada.`,
         })
     } catch(error) {
         next(error);
@@ -99,7 +99,7 @@ const modifyOpinionController = async (req, res, next) => {
 
         res.send({
             status: 'ok',
-            message: 'El texto se ha modificado',
+            message: `El texto con id: ${id} se ha modificado`,
         })
     } catch(error) {
         next(error);
