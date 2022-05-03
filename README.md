@@ -14,3 +14,4 @@ Then run the node server
 * MYSQL_USER = Type here db user
 * MYSQL_PASSWORD = Type here db password
 * MYSQL_DATABASE = Type here db name
+* SECRET = Type JWT secret here
