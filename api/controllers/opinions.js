@@ -9,7 +9,7 @@ const getOpinionsController = async (req, res, next) => {
         const opinions = await getAllOpinions();
         res.send({
             status: 'ok',
-            message: opinions,
+            data: opinions,
         })
     } catch(error) {
         next(error);
@@ -32,7 +32,7 @@ const newOpinionController = async (req, res, next) => {
         const id = await createOpinion(topic, req.idUser, text);
         res.send({
             status: 'ok',
-            message: `Opinión con id: ${id} creada correctamente`,
+            data: `Opinión con id: ${id} creada correctamente`,
         })
     } catch(error) {
         next(error);
@@ -48,7 +48,7 @@ const getSingleOpinionController = async (req, res, next) => {
         const opinion = await getOpinionById(id)
         res.send({
             status: 'ok',
-            message: opinion,
+            data: opinion,
         })
     } catch(error) {
         next(error);
@@ -75,7 +75,7 @@ const deleteOpinionController = async (req, res, next) => {
 
         res.send({
             status: 'ok',
-            message: `La opinión con id: ${id} ha sido eliminada.`,
+            data: `La opinión con id: ${id} ha sido eliminada.`,
         })
     } catch(error) {
         next(error);
@@ -99,7 +99,7 @@ const modifyOpinionController = async (req, res, next) => {
 
         res.send({
             status: 'ok',
-            message: `El texto con id: ${id} se ha modificado`,
+            data: `El texto con id: ${id} se ha modificado`,
         })
     } catch(error) {
         next(error);

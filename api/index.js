@@ -2,6 +2,7 @@ require('dotenv').config();
 
 const express = require('express');
 const morgan = require('morgan');
+const cors = require('cors');
 
 const {
   getAllTopicsController,
@@ -21,8 +22,10 @@ const {
   newUserController,
   getUsersController,
   getSingleUserController,
+  getUserOpinionsController,
   loginController,
   modifyUserController,
+  getLoggedUserInfoController,
 } = require('./controllers/users');
 
 const {
@@ -39,6 +42,7 @@ const app = express();
 
 app.use(express.json());
 app.use(morgan('dev'));
+app.use(cors());
 
 //Topic routes
 app.get('/api/topics', getAllTopicsController);
@@ -56,6 +60,8 @@ app.patch('/api/opinions/:idOpinion/ratings', authUser, updateOpinionRatingContr
 app.post('/api/users', newUserController);
 app.get('/api/users', getUsersController);
 app.get('/api/users/:id', getSingleUserController);
+app.get('/api/users/:id/opinions', getUserOpinionsController)
+app.get('/api/user', authUser, getLoggedUserInfoController);
 app.post('/api/login', loginController);
 app.patch('/api/users/:id', authUser, modifyUserController);
 
@@ -84,5 +90,5 @@ app.use((error, req, res, next) => {
   });
 });
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 4000;
 app.listen(port, () => console.log(`listening on port:${port}`));

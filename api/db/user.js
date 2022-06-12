@@ -11,7 +11,7 @@ const getUserByEmail = async (email) => {
   
       const [result] = await connection.query(
         `
-        SELECT idUser, userName, password, email FROM User WHERE email = ?
+        SELECT idUser, username, password, email FROM User WHERE email = ?
       `,
         [email]
       );
@@ -36,7 +36,7 @@ const getUserById = async (id) => {
       connection = await getConnection();
 
       const result = await connection.query(`
-          SELECT userName, email FROM User WHERE idUser = ?
+          SELECT username, email FROM User WHERE idUser = ?
       `, [id]);
 
       if(result.length === 0) {
@@ -58,7 +58,7 @@ const getUsers = async () => {
       connection = await getConnection();
 
       const [result] = await connection.query(`
-          SELECT userName, email FROM User ORDER BY userName ASC
+          SELECT username, email FROM User ORDER BY username ASC
       `);
 
       return result;

@@ -3,6 +3,8 @@ const jwt = require('jsonwebtoken')
 const Joi = require('@hapi/joi');
 const {generateError} = require('../helpers');
 const {createUser, getUserById, getUsers, getUserByEmail, modifyUserByEmail} = require('../db/user');
+const { getOpinionsByUserId } = require('../db/opinions')
+
 require("dotenv").config()
 
 const newUserController = async (req, res, next) => {
@@ -39,7 +41,7 @@ const getUsersController = async (req, res, next) => {
 
         res.send({
             status: 'ok',
-            message: users,
+            data: users,
         })
       } catch(error) {
         next(error)
@@ -54,12 +56,29 @@ const getSingleUserController = async (req, res, next) => {
 
         res.send({
             status: 'ok',
-            message: user,
+            data: user,
         })
       } catch(error) {
         next(error)
       }
 };
+
+const getUserOpinionsController = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+
+    const user = await getOpinionsByUserId(id);
+
+    res.send({
+      status: 'ok',
+      data: user,
+    });
+  } catch (error) {
+    next(error);
+  }
+}
+
+
 
 const loginController = async (req, res, next) => {
   try {
@@ -98,6 +117,19 @@ const loginController = async (req, res, next) => {
   }
 };
 
+
+const getLoggedUserInfoController = async (req, res, next) => {
+  try {
+    const user = await getUserById(req.idUser);
+      res.send({
+          status: 'ok',
+          message: user,
+      })
+    } catch(error) {
+      next(error)
+    }
+};
+
 const modifyUserController = async (req, res, next) => {
   try {
       const { id } = req.params;
@@ -128,4 +160,6 @@ module.exports = {
     getSingleUserController,
     loginController,
     modifyUserController,
+    getLoggedUserInfoController,
+    getUserOpinionsController 
 };
