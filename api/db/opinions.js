@@ -57,17 +57,17 @@ const getOpinionById = async (id) => {
     }
 }
 
-const createOpinion = async (idTopic, idUser, text, createdAt) => {
+const createOpinion = async (idTopic, idUser, text) => {
     let connection;
 
     try {
         connection = await getConnection();
 
         const [result] = await connection.query(`
-        INSERT INTO Opinion (idTopic, idUser, text, createdAt)
-        VALUES(?, ?, ?, ?);
+        INSERT INTO Opinion (idTopic, idUser, text)
+        VALUES(?, ?, ?);
         `, 
-        [idTopic, idUser, text, createdAt]
+        [idTopic, idUser, text]
         );
 
         return result.insertId;
