@@ -1,0 +1,1427 @@
+{
+	"log": {
+		"version": "1.2",
+		"creator": {
+			"name": "Insomnia REST Client",
+			"version": "insomnia.desktop.app:v2022.1.1"
+		},
+		"entries": [
+			{
+				"startedDateTime": "2022-05-03T20:15:12.283Z",
+				"time": 5.196,
+				"request": {
+					"method": "POST",
+					"url": "http://localhost:3000/api/opinions",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"name": "Authorization",
+							"value": ""
+						}
+					],
+					"queryString": [],
+					"postData": {
+						"mimeType": "application/json",
+						"text": "{\n\t\"text\": \"Lorem ipsum new opinion\",\n\t\"topic\": 1\n}",
+						"params": []
+					},
+					"headersSize": -1,
+					"bodySize": -1,
+					"settingEncodeUrl": true
+				},
+				"response": {
+					"status": 401,
+					"statusText": "Unauthorized",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"name": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"name": "Content-Length",
+							"value": "65"
+						},
+						{
+							"name": "ETag",
+							"value": "W/\"41-mMwpsdk2XUGW40qgkLKusdu3niA\""
+						},
+						{
+							"name": "Date",
+							"value": "Tue, 03 May 2022 19:04:08 GMT"
+						},
+						{
+							"name": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"name": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"content": {
+						"size": 65,
+						"mimeType": "application/json; charset=utf-8",
+						"text": "{\"status\":\"error\",\"message\":\"Falta la cabecera de Authorization\"}"
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"cache": {},
+				"timings": {
+					"blocked": -1,
+					"dns": -1,
+					"connect": -1,
+					"send": 0,
+					"wait": 5.196,
+					"receive": 0,
+					"ssl": -1
+				},
+				"comment": "New Opinion"
+			},
+			{
+				"startedDateTime": "2022-05-03T20:15:12.283Z",
+				"time": 5.352,
+				"request": {
+					"method": "GET",
+					"url": "http://localhost:3000/api/opinions",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [],
+					"queryString": [],
+					"postData": {
+						"mimeType": "",
+						"text": "",
+						"params": []
+					},
+					"headersSize": -1,
+					"bodySize": -1,
+					"settingEncodeUrl": true
+				},
+				"response": {
+					"status": 200,
+					"statusText": "OK",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"name": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"name": "Content-Length",
+							"value": "275"
+						},
+						{
+							"name": "ETag",
+							"value": "W/\"113-oPRJd6jK/wxfecI/ku/8hzxzSvg\""
+						},
+						{
+							"name": "Date",
+							"value": "Tue, 03 May 2022 19:04:12 GMT"
+						},
+						{
+							"name": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"name": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"content": {
+						"size": 275,
+						"mimeType": "application/json; charset=utf-8",
+						"text": "{\"status\":\"ok\",\"message\":[{\"idOpinion\":1,\"text\":\"lorem ipsum 1\",\"idTopic\":1,\"idUser\":1},{\"idOpinion\":2,\"text\":\"lorem ipsum 2\",\"idTopic\":1,\"idUser\":1},{\"idOpinion\":3,\"text\":\"lorem ipsum 3\",\"idTopic\":2,\"idUser\":2},{\"idOpinion\":4,\"text\":\"lorem ipsum 4\",\"idTopic\":1,\"idUser\":1}]}"
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"cache": {},
+				"timings": {
+					"blocked": -1,
+					"dns": -1,
+					"connect": -1,
+					"send": 0,
+					"wait": 5.352,
+					"receive": 0,
+					"ssl": -1
+				},
+				"comment": "Get Opinions"
+			},
+			{
+				"startedDateTime": "2022-05-03T20:15:12.283Z",
+				"time": 4.233,
+				"request": {
+					"method": "GET",
+					"url": "http://localhost:3000/api/opinions/1",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [],
+					"queryString": [],
+					"postData": {
+						"mimeType": "",
+						"text": "",
+						"params": []
+					},
+					"headersSize": -1,
+					"bodySize": -1,
+					"settingEncodeUrl": true
+				},
+				"response": {
+					"status": 200,
+					"statusText": "OK",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"name": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"name": "Content-Length",
+							"value": "87"
+						},
+						{
+							"name": "ETag",
+							"value": "W/\"57-554PkD5A2Sd5aocBuTSf3ZqqyZg\""
+						},
+						{
+							"name": "Date",
+							"value": "Tue, 03 May 2022 19:04:15 GMT"
+						},
+						{
+							"name": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"name": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"content": {
+						"size": 87,
+						"mimeType": "application/json; charset=utf-8",
+						"text": "{\"status\":\"ok\",\"message\":{\"idOpinion\":1,\"text\":\"lorem ipsum 1\",\"idTopic\":1,\"idUser\":1}}"
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"cache": {},
+				"timings": {
+					"blocked": -1,
+					"dns": -1,
+					"connect": -1,
+					"send": 0,
+					"wait": 4.233,
+					"receive": 0,
+					"ssl": -1
+				},
+				"comment": "Get Single Opinion"
+			},
+			{
+				"startedDateTime": "2022-05-03T20:15:12.283Z",
+				"time": 3.8289999999999997,
+				"request": {
+					"method": "DELETE",
+					"url": "http://localhost:3000/api/opinions/1",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "Authorization",
+							"value": ""
+						}
+					],
+					"queryString": [],
+					"postData": {
+						"mimeType": "",
+						"text": "",
+						"params": []
+					},
+					"headersSize": -1,
+					"bodySize": -1,
+					"settingEncodeUrl": true
+				},
+				"response": {
+					"status": 401,
+					"statusText": "Unauthorized",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"name": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"name": "Content-Length",
+							"value": "65"
+						},
+						{
+							"name": "ETag",
+							"value": "W/\"41-mMwpsdk2XUGW40qgkLKusdu3niA\""
+						},
+						{
+							"name": "Date",
+							"value": "Tue, 03 May 2022 19:04:20 GMT"
+						},
+						{
+							"name": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"name": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"content": {
+						"size": 65,
+						"mimeType": "application/json; charset=utf-8",
+						"text": "{\"status\":\"error\",\"message\":\"Falta la cabecera de Authorization\"}"
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"cache": {},
+				"timings": {
+					"blocked": -1,
+					"dns": -1,
+					"connect": -1,
+					"send": 0,
+					"wait": 3.8289999999999997,
+					"receive": 0,
+					"ssl": -1
+				},
+				"comment": "Delete Opinion"
+			},
+			{
+				"startedDateTime": "2022-05-03T20:15:12.283Z",
+				"time": 2.821,
+				"request": {
+					"method": "PATCH",
+					"url": "http://localhost:3000/api/opinions/1",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"name": "Authorization",
+							"value": ""
+						}
+					],
+					"queryString": [],
+					"postData": {
+						"mimeType": "application/json",
+						"text": "{\n\t\"text\": \"Lorem ipsum update\"\n}",
+						"params": []
+					},
+					"headersSize": -1,
+					"bodySize": -1,
+					"settingEncodeUrl": true
+				},
+				"response": {
+					"status": 401,
+					"statusText": "Unauthorized",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"name": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"name": "Content-Length",
+							"value": "65"
+						},
+						{
+							"name": "ETag",
+							"value": "W/\"41-mMwpsdk2XUGW40qgkLKusdu3niA\""
+						},
+						{
+							"name": "Date",
+							"value": "Tue, 03 May 2022 19:04:23 GMT"
+						},
+						{
+							"name": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"name": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"content": {
+						"size": 65,
+						"mimeType": "application/json; charset=utf-8",
+						"text": "{\"status\":\"error\",\"message\":\"Falta la cabecera de Authorization\"}"
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"cache": {},
+				"timings": {
+					"blocked": -1,
+					"dns": -1,
+					"connect": -1,
+					"send": 0,
+					"wait": 2.821,
+					"receive": 0,
+					"ssl": -1
+				},
+				"comment": "Modify Opinion"
+			},
+			{
+				"startedDateTime": "2022-05-03T20:15:12.283Z",
+				"time": 36.986,
+				"request": {
+					"method": "POST",
+					"url": "http://localhost:3000/api/users",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"queryString": [],
+					"postData": {
+						"mimeType": "",
+						"text": "{\n    \"userName\": \"example100\",\n    \"email\": \"example100@example.com\",\n    \"password\": \"example100\"\n}",
+						"params": []
+					},
+					"headersSize": -1,
+					"bodySize": -1,
+					"settingEncodeUrl": true
+				},
+				"response": {
+					"status": 200,
+					"statusText": "OK",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"name": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"name": "Content-Length",
+							"value": "51"
+						},
+						{
+							"name": "ETag",
+							"value": "W/\"33-1eTKmTvtMUmnm27dgwYAyn/A8t0\""
+						},
+						{
+							"name": "Date",
+							"value": "Tue, 03 May 2022 19:05:20 GMT"
+						},
+						{
+							"name": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"name": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"content": {
+						"size": 51,
+						"mimeType": "application/json; charset=utf-8",
+						"text": "{\"status\":\"ok\",\"message\":\"User created with id: 3\"}"
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"cache": {},
+				"timings": {
+					"blocked": -1,
+					"dns": -1,
+					"connect": -1,
+					"send": 0,
+					"wait": 36.986,
+					"receive": 0,
+					"ssl": -1
+				},
+				"comment": "Register User"
+			},
+			{
+				"startedDateTime": "2022-05-03T20:15:12.283Z",
+				"time": 5.055,
+				"request": {
+					"method": "GET",
+					"url": "http://localhost:3000/api/users/1",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [],
+					"queryString": [],
+					"postData": {
+						"mimeType": "",
+						"text": "",
+						"params": []
+					},
+					"headersSize": -1,
+					"bodySize": -1,
+					"settingEncodeUrl": true
+				},
+				"response": {
+					"status": 200,
+					"statusText": "OK",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"name": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"name": "Content-Length",
+							"value": "81"
+						},
+						{
+							"name": "ETag",
+							"value": "W/\"51-tWD5CzTfR7pD4ENTO2al6FBhZMI\""
+						},
+						{
+							"name": "Date",
+							"value": "Sun, 01 May 2022 20:14:22 GMT"
+						},
+						{
+							"name": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"name": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"content": {
+						"size": 81,
+						"mimeType": "application/json; charset=utf-8",
+						"text": "{\"status\":\"ok\",\"message\":[{\"userName\":\"example1\",\"email\":\"example@example.com\"}]}"
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"cache": {},
+				"timings": {
+					"blocked": -1,
+					"dns": -1,
+					"connect": -1,
+					"send": 0,
+					"wait": 5.055,
+					"receive": 0,
+					"ssl": -1
+				},
+				"comment": "Get Single User"
+			},
+			{
+				"startedDateTime": "2022-05-03T20:15:12.283Z",
+				"time": 3.765,
+				"request": {
+					"method": "GET",
+					"url": "http://localhost:3000/api/users",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [],
+					"queryString": [],
+					"postData": {
+						"mimeType": "",
+						"text": "",
+						"params": []
+					},
+					"headersSize": -1,
+					"bodySize": -1,
+					"settingEncodeUrl": true
+				},
+				"response": {
+					"status": 200,
+					"statusText": "OK",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"name": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"name": "Content-Length",
+							"value": "136"
+						},
+						{
+							"name": "ETag",
+							"value": "W/\"88-TrNAKj3FYzCm8g6he6ptqJS+R2g\""
+						},
+						{
+							"name": "Date",
+							"value": "Sun, 01 May 2022 20:14:30 GMT"
+						},
+						{
+							"name": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"name": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"content": {
+						"size": 136,
+						"mimeType": "application/json; charset=utf-8",
+						"text": "{\"status\":\"ok\",\"message\":[{\"userName\":\"example1\",\"email\":\"example@example.com\"},{\"userName\":\"example2\",\"email\":\"example2@example.com\"}]}"
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"cache": {},
+				"timings": {
+					"blocked": -1,
+					"dns": -1,
+					"connect": -1,
+					"send": 0,
+					"wait": 3.765,
+					"receive": 0,
+					"ssl": -1
+				},
+				"comment": "Get Users"
+			},
+			{
+				"startedDateTime": "2022-05-03T20:15:12.283Z",
+				"time": 131801.683,
+				"request": {
+					"method": "POST",
+					"url": "http://localhost:3000/api/login",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"queryString": [],
+					"postData": {
+						"mimeType": "application/json",
+						"text": "{\n\t\"email\": \"example100@example.com\",\n\t\"password\": \"example100\"\n}",
+						"params": []
+					},
+					"headersSize": -1,
+					"bodySize": -1,
+					"settingEncodeUrl": true
+				},
+				"response": {
+					"status": 200,
+					"statusText": "OK",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"name": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"name": "Content-Length",
+							"value": "162"
+						},
+						{
+							"name": "ETag",
+							"value": "W/\"a2-Pf0bOab51KXfkCP4YKthsxLHCpU\""
+						},
+						{
+							"name": "Date",
+							"value": "Tue, 03 May 2022 19:47:14 GMT"
+						},
+						{
+							"name": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"name": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"content": {
+						"size": 162,
+						"mimeType": "application/json; charset=utf-8",
+						"text": "{\"status\":\"ok\",\"data\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNjUxNjA3MjMyLCJleHAiOjE2NTQxOTkyMzJ9.rnOozQDCnpZcpnymDNnOCCaibR99dnc4eWmcGkjJ1PM\"}"
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"cache": {},
+				"timings": {
+					"blocked": -1,
+					"dns": -1,
+					"connect": -1,
+					"send": 0,
+					"wait": 131801.683,
+					"receive": 0,
+					"ssl": -1
+				},
+				"comment": "Login User"
+			},
+			{
+				"startedDateTime": "2022-05-03T20:15:12.283Z",
+				"time": 2.988,
+				"request": {
+					"method": "PATCH",
+					"url": "http://localhost:3000/api/users/4",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"name": "Authorization",
+							"value": ""
+						}
+					],
+					"queryString": [],
+					"postData": {
+						"mimeType": "application/json",
+						"text": "{\n\t\"userName\": \"loremIpsumUser\",\n\t\"email\": \"example@example.com\"\n}",
+						"params": []
+					},
+					"headersSize": -1,
+					"bodySize": -1,
+					"settingEncodeUrl": true
+				},
+				"response": {
+					"status": 401,
+					"statusText": "Unauthorized",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"name": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"name": "Content-Length",
+							"value": "65"
+						},
+						{
+							"name": "ETag",
+							"value": "W/\"41-mMwpsdk2XUGW40qgkLKusdu3niA\""
+						},
+						{
+							"name": "Date",
+							"value": "Sun, 01 May 2022 20:16:58 GMT"
+						},
+						{
+							"name": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"name": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"content": {
+						"size": 65,
+						"mimeType": "application/json; charset=utf-8",
+						"text": "{\"status\":\"error\",\"message\":\"Falta la cabecera de Authorization\"}"
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"cache": {},
+				"timings": {
+					"blocked": -1,
+					"dns": -1,
+					"connect": -1,
+					"send": 0,
+					"wait": 2.988,
+					"receive": 0,
+					"ssl": -1
+				},
+				"comment": "Modify User"
+			},
+			{
+				"startedDateTime": "2022-05-03T20:15:12.283Z",
+				"time": 9.725,
+				"request": {
+					"method": "GET",
+					"url": "http://localhost:3000/api/topics",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [],
+					"queryString": [],
+					"postData": {
+						"mimeType": "",
+						"text": "",
+						"params": []
+					},
+					"headersSize": -1,
+					"bodySize": -1,
+					"settingEncodeUrl": true
+				},
+				"response": {
+					"status": 200,
+					"statusText": "OK",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"name": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"name": "Content-Length",
+							"value": "433"
+						},
+						{
+							"name": "ETag",
+							"value": "W/\"1b1-CY3L/EtIr+c+LCGEy2GpVR+3vzU\""
+						},
+						{
+							"name": "Date",
+							"value": "Tue, 03 May 2022 19:03:18 GMT"
+						},
+						{
+							"name": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"name": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"content": {
+						"size": 433,
+						"mimeType": "application/json; charset=utf-8",
+						"text": "{\"status\":\"ok\",\"topics\":[{\"idTopic\":1,\"description\":\"foo\"},{\"idTopic\":2,\"description\":\"ProgrammerHummor\"},{\"idTopic\":3,\"description\":\"Programming\"},{\"idTopic\":4,\"description\":\"Linux\"},{\"idTopic\":5,\"description\":\"JavaScript\"},{\"idTopic\":6,\"description\":\"NodeJs\"},{\"idTopic\":7,\"description\":\"SQL\"},{\"idTopic\":8,\"description\":\"my new topic 2\"},{\"idTopic\":9,\"description\":\"my new topic 3\"},{\"idTopic\":10,\"description\":\"my new topic 4\"}]}"
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"cache": {},
+				"timings": {
+					"blocked": -1,
+					"dns": -1,
+					"connect": -1,
+					"send": 0,
+					"wait": 9.725,
+					"receive": 0,
+					"ssl": -1
+				},
+				"comment": "getAllTopics"
+			},
+			{
+				"startedDateTime": "2022-05-03T20:15:12.283Z",
+				"time": 4.45,
+				"request": {
+					"method": "GET",
+					"url": "http://localhost:3000/api/topics/1",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [],
+					"queryString": [],
+					"postData": {
+						"mimeType": "",
+						"text": "",
+						"params": []
+					},
+					"headersSize": -1,
+					"bodySize": -1,
+					"settingEncodeUrl": true
+				},
+				"response": {
+					"status": 200,
+					"statusText": "OK",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"name": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"name": "Content-Length",
+							"value": "33"
+						},
+						{
+							"name": "ETag",
+							"value": "W/\"21-jf/9Eu+54WQgFtVj60z2Yo0CzOU\""
+						},
+						{
+							"name": "Date",
+							"value": "Tue, 03 May 2022 19:03:24 GMT"
+						},
+						{
+							"name": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"name": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"content": {
+						"size": 33,
+						"mimeType": "application/json; charset=utf-8",
+						"text": "{\"idTopic\":1,\"description\":\"foo\"}"
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"cache": {},
+				"timings": {
+					"blocked": -1,
+					"dns": -1,
+					"connect": -1,
+					"send": 0,
+					"wait": 4.45,
+					"receive": 0,
+					"ssl": -1
+				},
+				"comment": "getTopicById"
+			},
+			{
+				"startedDateTime": "2022-05-03T20:15:12.283Z",
+				"time": 14.030000000000001,
+				"request": {
+					"method": "POST",
+					"url": "http://localhost:3000/api/topics",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"queryString": [],
+					"postData": {
+						"mimeType": "application/json",
+						"text": "{\n\t\"description\": \"my new topic 100\"\n}",
+						"params": []
+					},
+					"headersSize": -1,
+					"bodySize": -1,
+					"settingEncodeUrl": true
+				},
+				"response": {
+					"status": 200,
+					"statusText": "OK",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"name": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"name": "Content-Length",
+							"value": "81"
+						},
+						{
+							"name": "ETag",
+							"value": "W/\"51-WLeQRzNTH11DtOA8/9uETStxz3M\""
+						},
+						{
+							"name": "Date",
+							"value": "Tue, 03 May 2022 19:03:34 GMT"
+						},
+						{
+							"name": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"name": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"content": {
+						"size": 81,
+						"mimeType": "application/json; charset=utf-8",
+						"text": "{\"status\":\"ok\",\"message\":\"The topic with the ID: 11 has been created\",\"topic\":11}"
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"cache": {},
+				"timings": {
+					"blocked": -1,
+					"dns": -1,
+					"connect": -1,
+					"send": 0,
+					"wait": 14.030000000000001,
+					"receive": 0,
+					"ssl": -1
+				},
+				"comment": "createTopic"
+			},
+			{
+				"startedDateTime": "2022-05-03T20:15:12.283Z",
+				"time": 2.475,
+				"request": {
+					"method": "PUT",
+					"url": "http://localhost:3000/api/topics/1",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"queryString": [],
+					"postData": {
+						"mimeType": "application/json",
+						"text": "{\n\t\"description\": \"topic description update\"\n}",
+						"params": []
+					},
+					"headersSize": -1,
+					"bodySize": -1,
+					"settingEncodeUrl": true
+				},
+				"response": {
+					"status": 401,
+					"statusText": "Unauthorized",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"name": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"name": "Content-Length",
+							"value": "65"
+						},
+						{
+							"name": "ETag",
+							"value": "W/\"41-mMwpsdk2XUGW40qgkLKusdu3niA\""
+						},
+						{
+							"name": "Date",
+							"value": "Tue, 03 May 2022 19:03:46 GMT"
+						},
+						{
+							"name": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"name": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"content": {
+						"size": 65,
+						"mimeType": "application/json; charset=utf-8",
+						"text": "{\"status\":\"error\",\"message\":\"Falta la cabecera de Authorization\"}"
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"cache": {},
+				"timings": {
+					"blocked": -1,
+					"dns": -1,
+					"connect": -1,
+					"send": 0,
+					"wait": 2.475,
+					"receive": 0,
+					"ssl": -1
+				},
+				"comment": "updateTopic"
+			},
+			{
+				"startedDateTime": "2022-05-03T20:15:12.283Z",
+				"time": 76.668,
+				"request": {
+					"method": "GET",
+					"url": "http://localhost:3000/api/opinions/1/ratings",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [],
+					"queryString": [],
+					"postData": {
+						"mimeType": "",
+						"text": "",
+						"params": []
+					},
+					"headersSize": -1,
+					"bodySize": -1,
+					"settingEncodeUrl": true
+				},
+				"response": {
+					"status": 200,
+					"statusText": "OK",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"name": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"name": "Content-Length",
+							"value": "207"
+						},
+						{
+							"name": "ETag",
+							"value": "W/\"cf-CwJDg6sfYK3rimDqwn5+cBkXUac\""
+						},
+						{
+							"name": "Date",
+							"value": "Tue, 03 May 2022 19:02:48 GMT"
+						},
+						{
+							"name": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"name": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"content": {
+						"size": 207,
+						"mimeType": "application/json; charset=utf-8",
+						"text": "{\"status\":\"ok\",\"ratings\":[{\"idUser\":1,\"username\":\"example1\",\"idOpinion\":1,\"text\":\"lorem ipsum 1\",\"ratingType\":true},{\"idUser\":2,\"username\":\"example2\",\"idOpinion\":1,\"text\":\"lorem ipsum 1\",\"ratingType\":true}]}"
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"cache": {},
+				"timings": {
+					"blocked": -1,
+					"dns": -1,
+					"connect": -1,
+					"send": 0,
+					"wait": 76.668,
+					"receive": 0,
+					"ssl": -1
+				},
+				"comment": "getAllOpinionRatings"
+			},
+			{
+				"startedDateTime": "2022-05-03T20:15:12.283Z",
+				"time": 7.3340000000000005,
+				"request": {
+					"method": "GET",
+					"url": "http://localhost:3000/api/opinions/1/ratings/2",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [],
+					"queryString": [],
+					"postData": {
+						"mimeType": "",
+						"text": "",
+						"params": []
+					},
+					"headersSize": -1,
+					"bodySize": -1,
+					"settingEncodeUrl": true
+				},
+				"response": {
+					"status": 200,
+					"statusText": "OK",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"name": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"name": "Content-Length",
+							"value": "114"
+						},
+						{
+							"name": "ETag",
+							"value": "W/\"72-Gu4yWOEtK2EXavZip6q2gxgv0ZE\""
+						},
+						{
+							"name": "Date",
+							"value": "Tue, 03 May 2022 19:02:52 GMT"
+						},
+						{
+							"name": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"name": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"content": {
+						"size": 114,
+						"mimeType": "application/json; charset=utf-8",
+						"text": "{\"status\":\"ok\",\"rating\":{\"idUser\":2,\"username\":\"example2\",\"idOpinion\":1,\"text\":\"lorem ipsum 1\",\"ratingType\":true}}"
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"cache": {},
+				"timings": {
+					"blocked": -1,
+					"dns": -1,
+					"connect": -1,
+					"send": 0,
+					"wait": 7.3340000000000005,
+					"receive": 0,
+					"ssl": -1
+				},
+				"comment": "getOpinionRatingById"
+			},
+			{
+				"startedDateTime": "2022-05-03T20:15:12.283Z",
+				"time": 31.965,
+				"request": {
+					"method": "POST",
+					"url": "http://localhost:3000/api/opinions/3/ratings",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"queryString": [],
+					"postData": {
+						"mimeType": "application/json",
+						"text": "{\n\t\"ratingType\":true\n}",
+						"params": []
+					},
+					"headersSize": -1,
+					"bodySize": -1,
+					"settingEncodeUrl": true
+				},
+				"response": {
+					"status": 401,
+					"statusText": "Unauthorized",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"name": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"name": "Content-Length",
+							"value": "65"
+						},
+						{
+							"name": "ETag",
+							"value": "W/\"41-mMwpsdk2XUGW40qgkLKusdu3niA\""
+						},
+						{
+							"name": "Date",
+							"value": "Tue, 03 May 2022 19:03:01 GMT"
+						},
+						{
+							"name": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"name": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"content": {
+						"size": 65,
+						"mimeType": "application/json; charset=utf-8",
+						"text": "{\"status\":\"error\",\"message\":\"Falta la cabecera de Authorization\"}"
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"cache": {},
+				"timings": {
+					"blocked": -1,
+					"dns": -1,
+					"connect": -1,
+					"send": 0,
+					"wait": 31.965,
+					"receive": 0,
+					"ssl": -1
+				},
+				"comment": "createRating"
+			},
+			{
+				"startedDateTime": "2022-05-03T20:15:12.283Z",
+				"time": 15173.726,
+				"request": {
+					"method": "PATCH",
+					"url": "http://localhost:3000/api/opinions/3/ratings",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"name": "Authorization",
+							"value": ""
+						}
+					],
+					"queryString": [],
+					"postData": {
+						"mimeType": "application/json",
+						"text": "{\n\t\"ratingType\":false\n}",
+						"params": []
+					},
+					"headersSize": -1,
+					"bodySize": -1,
+					"settingEncodeUrl": true
+				},
+				"response": {
+					"status": 404,
+					"statusText": "Not Found",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"name": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"name": "Content-Length",
+							"value": "73"
+						},
+						{
+							"name": "ETag",
+							"value": "W/\"49-vnb1tvt2I0lkjp1AU+H0XA03hr0\""
+						},
+						{
+							"name": "Date",
+							"value": "Tue, 03 May 2022 19:48:06 GMT"
+						},
+						{
+							"name": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"name": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"content": {
+						"size": 73,
+						"mimeType": "application/json; charset=utf-8",
+						"text": "{\"status\":\"error\",\"message\":\"The rating with the given ID was not found\"}"
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"cache": {},
+				"timings": {
+					"blocked": -1,
+					"dns": -1,
+					"connect": -1,
+					"send": 0,
+					"wait": 15173.726,
+					"receive": 0,
+					"ssl": -1
+				},
+				"comment": "updateOpinionRating"
+			}
+		]
+	}
+}

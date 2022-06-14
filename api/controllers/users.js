@@ -1,77 +1,105 @@
 const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken')
+const jwt = require('jsonwebtoken');
 const Joi = require('@hapi/joi');
-const {generateError} = require('../helpers');
-const {createUser, getUserById, getUsers, getUserByEmail, modifyUserByEmail} = require('../db/user');
-require("dotenv").config()
+const { generateError } = require('../helpers');
+const {
+  createUser,
+  getUserById,
+  getUsers,
+  getUserByEmail,
+  modifyUserById,
+} = require('../db/user');
+const { getOpinionsByUserId } = require('../db/opinions');
+
+require('dotenv').config();
 
 const newUserController = async (req, res, next) => {
   try {
-    const {userName, email, password} = req.body;
+    const { userName, email, password } = req.body;
 
     const schema = Joi.object().keys({
       userName: Joi.string().min(2).max(20).required(),
-      email: Joi.string().email().required().error(new Error('email incorrecto')),
-      password: Joi.string().min(8).required().error(new Error('mala contraseña')),
-    })
+      email: Joi.string()
+        .email()
+        .required()
+        .error(new Error('email incorrecto')),
+      password: Joi.string()
+        .min(8)
+        .required()
+        .error(new Error('mala contraseña')),
+    });
 
     const validation = schema.validate(req.body);
 
     if (validation.error) {
-      throw generateError (validation.error.message, 400);
+      throw generateError(validation.error.message, 400);
     }
 
     const id = await createUser(userName, email, password);
     console.log(id);
-    
+
     res.send({
-        status: 'ok',
-        message: `User created with id: ${id}`,
+      status: 'ok',
+      message: `User created with id: ${id}`,
     });
-  } catch(error) {
-    next(error)
+  } catch (error) {
+    next(error);
   }
 };
 
 const getUsersController = async (req, res, next) => {
-    try {
-        const users = await getUsers();
+  try {
+    const users = await getUsers();
 
-        res.send({
-            status: 'ok',
-            message: users,
-        })
-      } catch(error) {
-        next(error)
-      }
+    res.send({
+      status: 'ok',
+      data: users,
+    });
+  } catch (error) {
+    next(error);
+  }
 };
 
 const getSingleUserController = async (req, res, next) => {
-    try {
-      const { id } = req.params;
-      
-      const user = await getUserById(id);
+  try {
+    const { id } = req.params;
 
-        res.send({
-            status: 'ok',
-            message: user,
-        })
-      } catch(error) {
-        next(error)
-      }
+    const user = await getUserById(id);
+
+    res.send({
+      status: 'ok',
+      data: user,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+const getUserOpinionsController = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+
+    const user = await getOpinionsByUserId(id);
+
+    res.send({
+      status: 'ok',
+      data: user,
+    });
+  } catch (error) {
+    next(error);
+  }
 };
 
 const getLoggedUserInfoController = async (req, res, next) => {
   try {
     const user = await getUserById(req.idUser);
-
-      res.send({
-          status: 'ok',
-          message: user,
-      })
-    } catch(error) {
-      next(error)
-    }
+    res.send({
+      status: 'ok',
+      data: user,
+    });
+  } catch (error) {
+    next(error);
+  }
 };
 
 const loginController = async (req, res, next) => {
@@ -84,7 +112,6 @@ const loginController = async (req, res, next) => {
 
     // Recojo los datos de la base de datos del usuario con ese mail
     const user = await getUserByEmail(email);
-    
 
     // Compruebo que las contraseñas coinciden
     const validPassword = await bcrypt.compare(password, user.password);
@@ -113,33 +140,32 @@ const loginController = async (req, res, next) => {
 
 const modifyUserController = async (req, res, next) => {
   try {
-      const { id } = req.params;
-      const { userName, email, } = req.body;
-      const user = await getUserByEmail(email);
+    const { id } = req.params;
+    const { userName, email } = req.body;
+    const user = await getUserById(id);
 
-      if (req.idUser !== user.idUser) {
-          throw generateError(
-              'No es posible modificar los datos de otro usuario'
-          )
-      }
+    if (req.idUser !== user.idUser) {
+      throw generateError('No es posible modificar los datos de otro usuario');
+    }
 
-      // Modificar los datos del usuario
-      await modifyUserByEmail(id, userName, email);
+    // Modificar los datos del usuario
+    await modifyUserById(id, userName, email);
 
-      res.send({
-          status: 'ok',
-          message: 'El usuario se ha modificado',
-      })
-  } catch(error) {
-      next(error);
+    res.send({
+      status: 'ok',
+      message: 'El usuario se ha modificado',
+    });
+  } catch (error) {
+    next(error);
   }
 };
 
 module.exports = {
-    newUserController,
-    getUsersController,
-    getSingleUserController,
-    loginController,
-    modifyUserController,
-    getLoggedUserInfoController
+  newUserController,
+  getUsersController,
+  getSingleUserController,
+  loginController,
+  modifyUserController,
+  getLoggedUserInfoController,
+  getUserOpinionsController,
 };

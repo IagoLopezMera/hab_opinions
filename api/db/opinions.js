@@ -2,6 +2,23 @@
 const { generateError } = require('../helpers');
 const { getConnection } = require('./db');
 
+const getOpinionsByUserId = async (id) => {
+  let connection;
+
+  try {
+    connection = await getConnection();
+
+    const [result] = await connection.query(
+      `
+      SELECT Opinion.*, User.username FROM Opinion LEFT JOIN User on Opinion.idUser = User.idUser WHERE Opinion.idUser = ?`,
+      [id]
+    );
+    
+    return result;
+  } finally {
+    if (connection) connection.release();
+  }
+}
 
 const getAllOpinions = async () => {
     let connection;
@@ -10,7 +27,7 @@ const getAllOpinions = async () => {
         connection = await getConnection();
 
         const [result] = await connection.query(`
-        SELECT idOpinion, text, idTopic, idUser  FROM Opinion ORDER BY idOpinion ASC;
+        SELECT Opinion.idOpinion, Opinion.text, Opinion.idTopic, Opinion.idUser, Opinion.createdAt, User.username FROM Opinion LEFT JOIN User on Opinion.idUser = User.idUser ORDER BY Opinion.createdAt DESC;
         `);
         
         return result;
@@ -27,7 +44,7 @@ const getOpinionById = async (id) => {
         connection = await getConnection();
 
         const [result] = await connection.query(`
-        SELECT idOpinion, text, idTopic, idUser FROM Opinion WHERE idOpinion = ?
+        SELECT Opinion.idOpinion, Opinion.text, Opinion.idTopic, Opinion.idUser, Opinion.createdAt, User.username FROM Opinion LEFT JOIN User on Opinion.idUser = User.idUser WHERE idOpinion = ?
         `, [id]);
 
         if(!result.length) {
@@ -40,17 +57,17 @@ const getOpinionById = async (id) => {
     }
 }
 
-const createOpinion = async (idTopic, idUser, text) => {
+const createOpinion = async (idTopic, idUser, text, createdAt) => {
     let connection;
 
     try {
         connection = await getConnection();
 
         const [result] = await connection.query(`
-        INSERT INTO Opinion (idTopic, idUser, text)
-        VALUES(?, ?, ?);
+        INSERT INTO Opinion (idTopic, idUser, text, createdAt)
+        VALUES(?, ?, ?, ?);
         `, 
-        [idTopic, idUser, text]
+        [idTopic, idUser, text, createdAt]
         );
 
         return result.insertId;
@@ -105,4 +122,5 @@ module.exports = {
     getOpinionById,
     deleteOpinionById,
     modifyOpinionById,
+    getOpinionsByUserId
 };
