@@ -62,7 +62,7 @@ const updateOpinionRatingController = async (req, res) => {
     });
 
   //check if the rating owner equals to te authenticated user
-  if (idUser !== opinion.idUser) {
+  if (idUser !== rating.idUser) {
     res.status(401).send({ status: 'error', message: 'Forbidden' });
   }
 

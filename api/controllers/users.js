@@ -61,6 +61,19 @@ const getSingleUserController = async (req, res, next) => {
       }
 };
 
+const getLoggedUserInfoController = async (req, res, next) => {
+  try {
+    const user = await getUserById(req.idUser);
+
+      res.send({
+          status: 'ok',
+          message: user,
+      })
+    } catch(error) {
+      next(error)
+    }
+};
+
 const loginController = async (req, res, next) => {
   try {
     const { email, password } = req.body;
@@ -128,4 +141,5 @@ module.exports = {
     getSingleUserController,
     loginController,
     modifyUserController,
+    getLoggedUserInfoController
 };
