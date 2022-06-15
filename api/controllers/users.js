@@ -8,7 +8,9 @@ const {
   getUsers,
   getUserByEmail,
   modifyUserById,
+  modifyPasswordById,
 } = require('../db/user');
+
 const { getOpinionsByUserId } = require('../db/opinions');
 
 require('dotenv').config();
@@ -160,12 +162,29 @@ const modifyUserController = async (req, res, next) => {
   }
 };
 
+const modifyPasswordController = async (req, res, next) => {
+  try {
+    const { password } = req.body;
+
+    // Modificar los datos del usuario
+    await modifyPasswordById(req.idUser, password);
+
+    res.send({
+      status: 'ok',
+      message: 'El password se ha modificado',
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   newUserController,
   getUsersController,
   getSingleUserController,
   loginController,
   modifyUserController,
+  modifyPasswordController,
   getLoggedUserInfoController,
   getUserOpinionsController,
 };

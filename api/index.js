@@ -25,6 +25,7 @@ const {
   getUserOpinionsController,
   loginController,
   modifyUserController,
+  modifyPasswordController,
   getLoggedUserInfoController,
 } = require('./controllers/users');
 
@@ -52,18 +53,30 @@ app.put('/api/topics/:id', authUser, updateTopicController);
 
 //Ratings routes
 app.get('/api/opinions/:idOpinion/ratings', getAllOpinionRatingsController);
-app.get('/api/opinions/:idOpinion/ratings/:idUser', getOpinionRatingByIdController);
-app.post('/api/opinions/:idOpinion/ratings', authUser, createOpinionRatingController);
-app.patch('/api/opinions/:idOpinion/ratings', authUser, updateOpinionRatingController);
+app.get(
+  '/api/opinions/:idOpinion/ratings/:idUser',
+  getOpinionRatingByIdController
+);
+app.post(
+  '/api/opinions/:idOpinion/ratings',
+  authUser,
+  createOpinionRatingController
+);
+app.patch(
+  '/api/opinions/:idOpinion/ratings',
+  authUser,
+  updateOpinionRatingController
+);
 
 // ENDPOINTS DE USERS
 app.post('/api/users', newUserController);
 app.get('/api/users', getUsersController);
 app.get('/api/users/:id', getSingleUserController);
-app.get('/api/users/:id/opinions', getUserOpinionsController)
+app.get('/api/users/:id/opinions', getUserOpinionsController);
 app.get('/api/user', authUser, getLoggedUserInfoController);
 app.post('/api/login', loginController);
 app.patch('/api/users/:id', authUser, modifyUserController);
+app.patch('/api/users/password/:id', authUser, modifyPasswordController);
 
 // ENDPOINTS DE OPINIONES
 app.post('/api/opinions', authUser, newOpinionController);

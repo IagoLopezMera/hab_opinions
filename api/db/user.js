@@ -121,10 +121,30 @@ const modifyUserById = async (id, userName, email) => {
   }
 };
 
+const modifyPasswordById = async (id, password) => {
+  let connection;
+
+  try {
+    connection = await getConnection();
+    // Encriptar la password
+    const passwordHash = await bcrypt.hash(password, 8);
+
+    const [result] = await connection.query(
+      `UPDATE User SET password = ? WHERE idUser = ?`,
+      [passwordHash, id]
+    );
+
+    return result;
+  } finally {
+    if (connection) connection.release();
+  }
+};
+
 module.exports = {
   createUser,
   getUserById,
   getUserByEmail,
   getUsers,
   modifyUserById,
+  modifyPasswordById,
 };
