@@ -92,6 +92,18 @@ const getUserOpinionsController = async (req, res, next) => {
   }
 };
 
+const getLoggedUserInfoController = async (req, res, next) => {
+  try {
+    const user = await getUserById(req.idUser);
+    res.send({
+      status: 'ok',
+      data: user,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
 const loginController = async (req, res, next) => {
   try {
     const { email, password } = req.body;
@@ -122,18 +134,6 @@ const loginController = async (req, res, next) => {
     res.send({
       status: 'ok',
       data: token,
-    });
-  } catch (error) {
-    next(error);
-  }
-};
-
-const getLoggedUserInfoController = async (req, res, next) => {
-  try {
-    const user = await getUserById(req.idUser);
-    res.send({
-      status: 'ok',
-      data: user,
     });
   } catch (error) {
     next(error);
