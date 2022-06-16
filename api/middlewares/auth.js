@@ -3,9 +3,9 @@ const { generateError } = require('../helpers');
 
 const authUser = (req, res, next) => {
   try {
-    const {authorization } = req.headers;
+    const { authorization } = req.headers;
 
-    if(!authorization) {
+    if (!authorization) {
       throw generateError('Falta la cabecera de Authorization', 401);
     }
 
@@ -13,22 +13,21 @@ const authUser = (req, res, next) => {
     let token;
 
     try {
-        token = jwt.verify(authorization, process.env.SECRET)
+      token = jwt.verify(authorization, process.env.SECRET);
     } catch {
-        throw generateError('Token incorrecto', 401)
+      throw generateError('Token incorrecto', 401);
     }
-    console.log(token.id);
+
     // Metemos la información del token en la request para usarla en el controlador
     req.idUser = token.id;
 
-    // Saltamos al controlador  
-      console.log('pasamos al controlador');
-      next();
-    } catch (error) {
-      next(error);
-    }
+    // Saltamos al controlador
+    next();
+  } catch (error) {
+    next(error);
+  }
 };
 
 module.exports = {
-    authUser,
+  authUser,
 };
