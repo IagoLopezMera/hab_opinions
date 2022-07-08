@@ -24,13 +24,13 @@ const newOpinionController = async (req, res, next) => {
     const { text, topic } = req.body;
 
     if (!text) {
-      throw generateError('El texto no puede estar vacío', 400);
+      throw generateError("Text can't be empty ", 400);
     }
 
     const id = await createOpinion(topic, req.idUser, text);
     res.send({
       status: 'ok',
-      data: `Opinión con id: ${id} creada correctamente`,
+      data: `Opinion with ID: ${id} has been correctly created`,
     });
   } catch (error) {
     next(error);
@@ -63,7 +63,7 @@ const deleteOpinionController = async (req, res, next) => {
     // Comprobar que el usario del token es el mismo que creó la opinión
     if (req.idUser !== opinion.idUser) {
       throw generateError(
-        'No es posible eliminar una opinión de otro usuario',
+        "It's not possible to delete other user's opinion",
         401
       );
     }
@@ -73,7 +73,7 @@ const deleteOpinionController = async (req, res, next) => {
 
     res.send({
       status: 'ok',
-      data: `La opinión con id: ${id} ha sido eliminada.`,
+      data: `Opinion with ID: ${id} has been deleted.`,
     });
   } catch (error) {
     next(error);
@@ -87,9 +87,7 @@ const modifyOpinionController = async (req, res, next) => {
     const opinion = await getOpinionById(id);
 
     if (req.idUser !== opinion.idUser) {
-      throw generateError(
-        'No es posible modificar una opinión de otro usuario'
-      );
+      throw generateError("It's not possible to change other user's opinion");
     }
 
     // Modificar la opinión
@@ -97,7 +95,7 @@ const modifyOpinionController = async (req, res, next) => {
 
     res.send({
       status: 'ok',
-      data: `El texto con id: ${id} se ha modificado`,
+      data: `Text with ID: ${id} has been modified`,
     });
   } catch (error) {
     next(error);

@@ -16,7 +16,7 @@ const getUserByEmail = async (email) => {
     );
 
     if (result.length === 0) {
-      throw generateError('No hay ningún usuario con ese email', 404);
+      throw generateError('There is no user with this email', 404);
     }
 
     return result[0];
@@ -41,7 +41,7 @@ const getUserById = async (id) => {
     );
 
     if (result.length === 0) {
-      throw generateError('No existe ningún usuario con esa id', 404);
+      throw generateError('There is no user with this ID', 404);
     }
     return result[0];
   } finally {
@@ -80,10 +80,7 @@ const createUser = async (userName, email, password) => {
     );
 
     if (user.length > 0) {
-      throw generateError(
-        'Ya existe un usuario en la base de datos con este email',
-        409
-      );
+      throw generateError('There is another user with this email', 409);
     }
 
     // Encriptar la password

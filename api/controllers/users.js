@@ -24,11 +24,13 @@ const newUserController = async (req, res, next) => {
       email: Joi.string()
         .email()
         .required()
-        .error(new Error('email incorrecto')),
+        .error(new Error('Inserted email is not correct')),
       password: Joi.string()
         .min(8)
         .required()
-        .error(new Error('mala contraseña')),
+        .error(
+          new Error('Inserted password is not correct. 8 characters minimum')
+        ),
     });
 
     const validation = schema.validate(req.body);
@@ -42,7 +44,7 @@ const newUserController = async (req, res, next) => {
 
     res.send({
       status: 'ok',
-      message: `User created with id: ${id}`,
+      message: `User created with ID: ${id}`,
     });
   } catch (error) {
     next(error);
@@ -109,7 +111,7 @@ const loginController = async (req, res, next) => {
     const { email, password } = req.body;
 
     if (!email || !password) {
-      throw generateError('Debes enviar un email y una password', 400);
+      throw generateError('You should send an email and a password', 400);
     }
 
     // Recojo los datos de la base de datos del usuario con ese mail
@@ -119,7 +121,7 @@ const loginController = async (req, res, next) => {
     const validPassword = await bcrypt.compare(password, user.password);
 
     if (!validPassword) {
-      throw generateError('La contraseña no coincide', 401);
+      throw generateError('Passwords do not match', 401);
     }
 
     // Creo el payload del token
@@ -147,7 +149,7 @@ const modifyUserController = async (req, res, next) => {
     const user = await getUserById(id);
 
     if (req.idUser !== user.idUser) {
-      throw generateError('No es posible modificar los datos de otro usuario');
+      throw generateError("It's not possible to change other user's data");
     }
 
     // Modificar los datos del usuario
@@ -155,7 +157,7 @@ const modifyUserController = async (req, res, next) => {
 
     res.send({
       status: 'ok',
-      message: 'El usuario se ha modificado',
+      message: 'Username has been modified',
     });
   } catch (error) {
     next(error);
@@ -171,7 +173,7 @@ const modifyPasswordController = async (req, res, next) => {
 
     res.send({
       status: 'ok',
-      message: 'El password se ha modificado',
+      message: 'Password has been modified',
     });
   } catch (error) {
     next(error);
