@@ -42,7 +42,7 @@ const getSingleOpinionController = async (req, res, next) => {
     const { id } = req.params;
 
     const opinion = await getOpinionById(id);
-    console.log(opinion);
+    
     res.send({
       status: 'ok',
       data: opinion,

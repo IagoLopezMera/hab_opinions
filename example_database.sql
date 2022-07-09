@@ -2,7 +2,7 @@
 --
 -- Host: localhost    Database: opinionsForumDB
 -- ------------------------------------------------------
--- Server version	8.0.29-0ubuntu0.20.04.2
+-- Server version	8.0.29-0ubuntu0.20.04.3
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -27,12 +27,13 @@ CREATE TABLE `Opinion` (
   `text` text NOT NULL,
   `idTopic` int NOT NULL,
   `idUser` int NOT NULL,
+  `createdAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`idOpinion`),
   KEY `fk_Opinion_User_idx` (`idUser`),
   KEY `fk_Opinion_Topic_idx` (`idTopic`),
   CONSTRAINT `fk_Opinion_Topic` FOREIGN KEY (`idTopic`) REFERENCES `Topic` (`idTopic`),
   CONSTRAINT `fk_Opinion_User` FOREIGN KEY (`idUser`) REFERENCES `User` (`idUser`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,7 +42,7 @@ CREATE TABLE `Opinion` (
 
 LOCK TABLES `Opinion` WRITE;
 /*!40000 ALTER TABLE `Opinion` DISABLE KEYS */;
-INSERT INTO `Opinion` VALUES (1,'lorem ipsum 1',1,1),(2,'lorem ipsum 2',1,1),(3,'lorem ipsum 3',2,2),(4,'lorem ipsum 4',1,1);
+INSERT INTO `Opinion` VALUES (18,'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque volutpat venenatis diam. Integer et dolor finibus lorem mattis pellentesque placerat eu leo. Donec at pretium nisl, et pellentesque purus. Suspendisse varius vulputate ex, id volutpat nisl sodales nec. Nulla facilisi. Suspendisse bibendum non ex in vulputate. Aliquam imperdiet leo sed ante semper dapibus. Fusce egestas id ligula et varius. Proin dapibus urna at vulputate varius.\n\nPellentesque sit amet vulputate arcu. Aenean sollicitudin, elit nec aliquet feugiat, ex lorem imperdiet lectus, a bibendum tellus purus a tellus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam rhoncus dignissim euismod. Sed a ullamcorper mi, vel imperdiet sem. Phasellus sed augue eget sem imperdiet facilisis. Vestibulum lacinia laoreet mauris, eget iaculis orci fermentum sit amet. Pellentesque mollis felis eu libero fermentum rhoncus. Sed et metus nibh. Integer laoreet nulla quis tortor luctus cursus. Etiam tincidunt odio in libero sodales ultricies. ',2,4,'2022-06-16 18:33:32'),(19,' Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque volutpat venenatis diam. Integer et dolor finibus lorem mattis pellentesque placerat eu leo. Donec at pretium nisl, et pellentesque purus. Suspendisse varius vulputate ex, id volutpat nisl sodales nec. Nulla facilisi. Suspendisse bibendum non ex in vulputate. Aliquam imperdiet leo sed ante semper dapibus. Fusce egestas id ligula et varius. Proin dapibus urna at vulputate varius.\n\nPellentesque sit amet vulputate arcu. Aenean sollicitudin, elit nec aliquet feugiat, ex lorem imperdiet lectus, a bibendum tellus purus a tellus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam rhoncus dignissim euismod. Sed a ullamcorper mi, vel imperdiet sem. Phasellus sed augue eget sem imperdiet facilisis. Vestibulum lacinia laoreet mauris, eget iaculis orci fermentum sit amet. Pellentesque mollis felis eu libero fermentum rhoncus. Sed et metus nibh. Integer laoreet nulla quis tortor luctus cursus. Etiam tincidunt odio in libero sodales ultricies. ',3,4,'2022-06-16 18:34:03'),(20,' Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque volutpat venenatis diam. Integer et dolor finibus lorem mattis pellentesque placerat eu leo. Donec at pretium nisl, et pellentesque purus. Suspendisse varius vulputate ex, id volutpat nisl sodales nec. Nulla facilisi. Suspendisse bibendum non ex in vulputate. Aliquam imperdiet leo sed ante semper dapibus. Fusce egestas id ligula et varius. Proin dapibus urna at vulputate varius.',4,4,'2022-06-16 18:34:13'),(21,' Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque volutpat venenatis diam. Integer et dolor finibus lorem mattis pellentesque placerat eu leo. Donec at pretium nisl, et pellentesque purus. Suspendisse varius vulputate ex, id volutpat nisl sodales nec. Nulla facilisi. Suspendisse bibendum non ex in vulputate. Aliquam imperdiet leo sed ante semper dapibus. Fusce egestas id ligula et varius. Proin dapibus urna at vulputate varius.\n\nPellentesque sit amet vulputate arcu. Aenean sollicitudin, elit nec aliquet feugiat, ex lorem imperdiet lectus, a bibendum tellus purus a tellus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam rhoncus dignissim euismod. Sed a ullamcorper mi, vel imperdiet sem. Phasellus sed augue eget sem imperdiet facilisis. Vestibulum lacinia laoreet mauris, eget iaculis orci fermentum sit amet. Pellentesque mollis felis eu libero fermentum rhoncus. Sed et metus nibh. Integer laoreet nulla quis tortor luctus cursus. Etiam tincidunt odio in libero sodales ultricies. ',6,4,'2022-06-16 18:34:24'),(22,' Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque volutpat venenatis diam. Integer et dolor finibus lorem mattis pellentesque placerat eu leo. Donec at pretium nisl, et pellentesque purus. Suspendisse varius vulputate ex, id volutpat nisl sodales nec. Nulla facilisi. Suspendisse bibendum non ex in vulputate. Aliquam imperdiet leo sed ante semper dapibus. Fusce egestas id ligula et varius. Proin dapibus urna at vulputate varius.\n\nPellentesque sit amet vulputate arcu. Aenean sollicitudin, elit nec aliquet feugiat, ex lorem imperdiet lectus, a bibendum tellus purus a tellus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam rhoncus dignissim euismod. Sed a ullamcorper mi, vel imperdiet sem. Phasellus sed augue eget sem imperdiet facilisis. Vestibulum lacinia laoreet mauris, eget iaculis orci fermentum sit amet. Pellentesque mollis felis eu libero fermentum rhoncus. Sed et metus nibh. Integer laoreet nulla quis tortor luctus cursus. Etiam tincidunt odio in libero sodales ultricies. ',6,4,'2022-06-16 18:34:33'),(23,' Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque volutpat venenatis diam. Integer et dolor finibus lorem mattis pellentesque placerat eu leo. Donec at pretium nisl, et pellentesque purus. Suspendisse varius vulputate ex, id volutpat nisl sodales nec. Nulla facilisi. Suspendisse bibendum non ex in vulputate. Aliquam imperdiet leo sed ante semper dapibus. Fusce egestas id ligula et varius. Proin dapibus urna at vulputate varius.\n\nPellentesque sit amet vulputate arcu. Aenean sollicitudin, elit nec aliquet feugiat, ex lorem imperdiet lectus, a bibendum tellus purus a tellus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam rhoncus dignissim euismod. Sed a ullamcorper mi, vel imperdiet sem. Phasellus sed augue eget sem imperdiet facilisis. Vestibulum lacinia laoreet mauris, eget iaculis orci fermentum sit amet. Pellentesque mollis felis eu libero fermentum rhoncus. Sed et metus nibh. Integer laoreet nulla quis tortor luctus cursus. Etiam tincidunt odio in libero sodales ultricies. ',4,7,'2022-06-16 18:35:21');
 /*!40000 ALTER TABLE `Opinion` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -69,7 +70,6 @@ CREATE TABLE `Rating` (
 
 LOCK TABLES `Rating` WRITE;
 /*!40000 ALTER TABLE `Rating` DISABLE KEYS */;
-INSERT INTO `Rating` VALUES (1,1,_binary ''),(1,3,_binary '\0'),(2,1,_binary '');
 /*!40000 ALTER TABLE `Rating` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -93,7 +93,7 @@ CREATE TABLE `Topic` (
 
 LOCK TABLES `Topic` WRITE;
 /*!40000 ALTER TABLE `Topic` DISABLE KEYS */;
-INSERT INTO `Topic` VALUES (1,'foo'),(2,'ProgrammerHummor'),(3,'Programming'),(4,'Linux'),(5,'JavaScript'),(6,'NodeJs'),(7,'SQL'),(8,'my new topic 2'),(9,'my new topic 3'),(10,'my new topic 4'),(11,'my new topic 100');
+INSERT INTO `Topic` VALUES (2,'ProgrammerHummor'),(3,'Programming'),(4,'Linux'),(5,'JavaScript'),(6,'NodeJs'),(7,'SQL');
 /*!40000 ALTER TABLE `Topic` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -110,7 +110,7 @@ CREATE TABLE `User` (
   `email` varchar(64) NOT NULL,
   `username` varchar(45) NOT NULL,
   PRIMARY KEY (`idUser`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -119,7 +119,7 @@ CREATE TABLE `User` (
 
 LOCK TABLES `User` WRITE;
 /*!40000 ALTER TABLE `User` DISABLE KEYS */;
-INSERT INTO `User` VALUES (1,'$2b$08$wKqy.la2A7NtZWwxI143au/MjobbV2N8S1g8CuroAlLQC.Pq8KYWq','example@example.com','example1'),(2,'$2b$08$wKqy.la2A7NtZWwxI143au/MjobbV2N8S1g8CuroAlLQC.Pq8KYWq','example2@example.com','example2'),(3,'$2b$08$wKqy.la2A7NtZWwxI143au/MjobbV2N8S1g8CuroAlLQC.Pq8KYWq','example100@example.com','example100');
+INSERT INTO `User` VALUES (1,'$2b$08$wKqy.la2A7NtZWwxI143au/MjobbV2N8S1g8CuroAlLQC.Pq8KYWq','example@example.com','example1'),(2,'$2b$08$wKqy.la2A7NtZWwxI143au/MjobbV2N8S1g8CuroAlLQC.Pq8KYWq','example2@example.com','example2'),(3,'$2b$08$wKqy.la2A7NtZWwxI143au/MjobbV2N8S1g8CuroAlLQC.Pq8KYWq','example100@example.com','example100'),(4,'$2b$08$kl8RFxXfSFUiRBsmzmodRuVXQ2IcscizEdQHkUecej5bN8uKPmoPy','example313@example.com','example313'),(5,'$2b$08$j7pOFA4LCEL8um82vXIICu12TtiJ2F/etBFeyTDMMEVVLJofq32ra','jaimito@example.com','jaimito'),(6,'$2b$08$Ldg0A23xu6aOrly9t0g0iu59cE9QPsonoyvFF6cUYpkowTbZkXVty','example12@example.com','example12'),(7,'$2b$08$BEnmYNjOgnjvufTHRSNLjebv6bArSXV5JqSzvgJcUJVr/T7AXPH6.','example13@example.com','example13'),(8,'$2b$08$99sKAtzKTAtP8EojQJmpjOa57AVXnTp7IiCDRQmOi4vJjDWE7OjH.','example14@example.com','example14'),(9,'$2b$08$aTEIXrlxAI1uIZ22Knj7gOi6bpBcjsRgMchReR9A6a0jBv9bTMHKO','example15@example.com','example15');
 /*!40000 ALTER TABLE `User` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -132,4 +132,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-05-03 21:29:30
+-- Dump completed on 2022-06-16 18:36:17

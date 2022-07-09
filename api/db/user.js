@@ -70,7 +70,7 @@ const getUsers = async () => {
 // Crea un usuario en la base de datos y devuelve su Id
 const createUser = async (userName, email, password) => {
   let connection;
-  console.log(password);
+  
   try {
     connection = await getConnection();
     // Comprobar que no exista otro usuario con ese email

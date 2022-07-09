@@ -6,7 +6,11 @@ const authUser = (req, res, next) => {
     const { authorization } = req.headers;
 
     if (!authorization) {
+<<<<<<< HEAD
       throw generateError('Authorization header is missing', 401);
+=======
+      throw generateError('Falta la cabecera de Authorization', 401);
+>>>>>>> b2b7ff9204823e13435b47af1331cebda9925fa1
     }
 
     // Comprobamos que el token sea correcto
@@ -15,9 +19,13 @@ const authUser = (req, res, next) => {
     try {
       token = jwt.verify(authorization, process.env.SECRET);
     } catch {
+<<<<<<< HEAD
       throw generateError('Wrong Token', 401);
+=======
+      throw generateError('Token incorrecto', 401);
+>>>>>>> b2b7ff9204823e13435b47af1331cebda9925fa1
     }
-    console.log(token.id);
+
     // Metemos la información del token en la request para usarla en el controlador
     req.idUser = token.id;
 
